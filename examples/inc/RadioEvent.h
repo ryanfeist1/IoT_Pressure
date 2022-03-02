@@ -9,6 +9,9 @@ class RadioEvent : public mDotEvent
  
 public:
     RadioEvent() {}
+    
+    char downlinkMsg [10];
+    bool newDownlink;
  
     virtual ~RadioEvent() {}
  
@@ -63,11 +66,31 @@ public:
             
             logDebug("Rx %d bytes", info->RxBufferSize);
             if (info->RxBufferSize > 0) {
+                if (info->RxBufferSize == 10){
+                    newDownlink = true;
+                    printf("[RADIOEVENT] info->RxBuffer: ");
+                    for (int i = 0; i < 10; i++){
+                        printf("%X ", info->RxBuffer[i]);
+                        downlinkMsg[i] = info->RxBuffer[i];
+                    }
+                }
+                else{
+                    newDownlink = false;
+                    printf("[RADIOEVENT] unacceptable RX length\r\n");
+                }
                 // print RX data as string and hexadecimal 
                 std::string rx((const char*)info->RxBuffer, info->RxBufferSize);
                 printf("Rx data: %s [%s]\r\n", rx.c_str(), mts::Text::bin2hexString(info->RxBuffer, info->RxBufferSize).c_str());
+                // user additions below
+                //printf("[RADIOEVENT] buffer: %X [%s]\r\n", mts::Text::bin2hexString(info->RxBuffer, info->RxBufferSize), mts::Text::bin2hexString(info->RxBuffer, info->RxBufferSize));
+            }
+            else{
+                newDownlink = false;
             }
         }
+        else{
+            newDownlink = false;
+            }
     }
 };
 

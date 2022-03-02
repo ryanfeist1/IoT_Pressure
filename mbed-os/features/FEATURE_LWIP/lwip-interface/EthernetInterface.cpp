@@ -46,15 +46,16 @@ nsapi_error_t EthernetInterface::set_dhcp(bool dhcp)
 
 nsapi_error_t EthernetInterface::connect()
 {
-    return mbed_lwip_bringup(_dhcp,
+    return mbed_lwip_bringup_2(_dhcp, false,
             _ip_address[0] ? _ip_address : 0,
             _netmask[0] ? _netmask : 0,
-            _gateway[0] ? _gateway : 0);
+            _gateway[0] ? _gateway : 0,
+            DEFAULT_STACK);
 }
 
 nsapi_error_t EthernetInterface::disconnect()
 {
-    return mbed_lwip_bringdown();
+    return mbed_lwip_bringdown_2(false);
 }
 
 const char *EthernetInterface::get_mac_address()

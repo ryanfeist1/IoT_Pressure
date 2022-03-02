@@ -22,15 +22,37 @@
 #define __MBED_CONFIG_DATA__
 
 // Configuration parameters
-#define MBED_CONF_NSAPI_PRESENT                     1    // set by library:nsapi
-#define MBED_CONF_FILESYSTEM_PRESENT                1    // set by library:filesystem
-#define MBED_CONF_PLATFORM_DEFAULT_SERIAL_BAUD_RATE 9600 // set by library:platform
-#define MBED_CONF_PLATFORM_STDIO_CONVERT_NEWLINES   0    // set by library:platform
-#define MBED_CONF_EVENTS_PRESENT                    1    // set by library:events
-#define MBED_CONF_RTOS_PRESENT                      1    // set by library:rtos
-#define MBED_CONF_PLATFORM_STDIO_BAUD_RATE          9600 // set by library:platform
-#define MBED_CONF_PLATFORM_STDIO_FLUSH_AT_EXIT      1    // set by library:platform
+#define HSE_VALUE                                         24000000 // set by target:XDOT_L151CC
+#define MBED_CONF_APP_MAIN_STACK_SIZE                     2048     // set by library:mdot-library[XDOT_L151CC]
+#define MBED_CONF_APP_THREAD_STACK_SIZE                   256      // set by library:mdot-library[XDOT_L151CC]
+#define MBED_CONF_DRIVERS_UART_SERIAL_RXBUF_SIZE          256      // set by library:drivers
+#define MBED_CONF_DRIVERS_UART_SERIAL_TXBUF_SIZE          256      // set by library:drivers
+#define MBED_CONF_EVENTS_PRESENT                          1        // set by library:events
+#define MBED_CONF_EVENTS_SHARED_DISPATCH_FROM_APPLICATION 0        // set by library:events
+#define MBED_CONF_EVENTS_SHARED_EVENTSIZE                 256      // set by library:events
+#define MBED_CONF_EVENTS_SHARED_HIGHPRIO_EVENTSIZE        256      // set by library:events
+#define MBED_CONF_EVENTS_SHARED_HIGHPRIO_STACKSIZE        1024     // set by library:events
+#define MBED_CONF_EVENTS_SHARED_STACKSIZE                 1024     // set by library:events
+#define MBED_CONF_EVENTS_USE_LOWPOWER_TIMER_TICKER        0        // set by library:events
+#define MBED_CONF_FILESYSTEM_PRESENT                      1        // set by library:filesystem
+#define MBED_CONF_NSAPI_PRESENT                           1        // set by library:nsapi
+#define MBED_CONF_PLATFORM_DEFAULT_SERIAL_BAUD_RATE       9600     // set by library:platform
+#define MBED_CONF_PLATFORM_FORCE_NON_COPYABLE_ERROR       0        // set by library:platform
+#define MBED_CONF_PLATFORM_STDIO_BAUD_RATE                9600     // set by library:platform
+#define MBED_CONF_PLATFORM_STDIO_CONVERT_NEWLINES         0        // set by library:platform
+#define MBED_CONF_PLATFORM_STDIO_FLUSH_AT_EXIT            1        // set by library:platform
+#define MBED_CONF_PPP_CELL_IFACE_APN_LOOKUP               0        // set by library:ppp-cell-iface
+#define MBED_CONF_PPP_CELL_IFACE_AT_PARSER_BUFFER_SIZE    256      // set by library:ppp-cell-iface
+#define MBED_CONF_PPP_CELL_IFACE_AT_PARSER_TIMEOUT        8000     // set by library:ppp-cell-iface
+#define MBED_CONF_PPP_CELL_IFACE_BAUD_RATE                115200   // set by library:ppp-cell-iface
+#define MBED_CONF_RTOS_PRESENT                            1        // set by library:rtos
+#define MBED_CONF_TARGET_LSE_AVAILABLE                    1        // set by target:FAMILY_STM32
+#define MBED_LFS_BLOCK_SIZE                               512      // set by library:littlefs
+#define MBED_LFS_ENABLE_INFO                              0        // set by library:littlefs
+#define MBED_LFS_LOOKAHEAD                                512      // set by library:littlefs
+#define MBED_LFS_PROG_SIZE                                64       // set by library:littlefs
+#define MBED_LFS_READ_SIZE                                64       // set by library:littlefs
 // Macros
-#define UNITY_INCLUDE_CONFIG_H                           // defined by library:utest
+#define UNITY_INCLUDE_CONFIG_H                                     // defined by library:utest
 
 #endif
